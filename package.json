@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-first-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedroDeAlba123/Basic-NodeJS-Project.git"
+  },
+  "author": "Pedro de Alba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedroDeAlba123/Basic-NodeJS-Project/issues"
+  },
+  "homepage": "https://github.com/pedroDeAlba123/Basic-NodeJS-Project#readme"
+}
