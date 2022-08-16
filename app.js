@@ -1,12 +1,17 @@
 const http = require("http");
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
-const admitData = require("./routes/admin");
-const shopRoutes = require("./routes/shop");
 const path = require('path')
+const shopRoutes = require("./routes/shop");
+const admitData = require("./routes/admin");
 
-app.set('view engine', 'pug');
+const bodyParser = require("body-parser");
+
+const expressHbs = require('express-handlebars')
+app.engine('hbs', expressHbs());
+app.set('view engine', 'hbs');
+
+//app.set('view engine', 'pug');
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
