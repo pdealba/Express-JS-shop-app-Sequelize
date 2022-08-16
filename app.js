@@ -8,7 +8,7 @@ const admitData = require("./routes/admin");
 const bodyParser = require("body-parser");
 
 const expressHbs = require('express-handlebars')
-app.engine('hbs', expressHbs());
+app.engine('hbs', expressHbs({extname:'hbs', defaultLayout: 'main-layout'}));
 app.set('view engine', 'hbs');
 
 //app.set('view engine', 'pug');
