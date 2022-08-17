@@ -1,31 +1,31 @@
-const http = require("http");
-const express = require("express");
-const app = express();
 const path = require("path");
-const shopRoutes = require("./routes/shop");
-const admitData = require("./routes/admin");
 
+const express = require("express");
 const bodyParser = require("body-parser");
 
-//const expressHbs = require('express-handlebars')
-//app.engine('hbs', expressHbs({extname:'hbs', defaultLayout: 'main-layout'}));
-//app.set('view engine', 'hbs');
+const errorController = require('./controllers/error');
 
-//app.set('view engine', 'pug');
+const app = express();
 
 app.set("view engine", "ejs");
 
-app.use(bodyParser.urlencoded({ extended: false }));
+const shopRoutes = require("./routes/shop");
+const admitRoutes = require("./routes/admin");
 
+/*
+const expressHbs = require('express-handlebars')
+app.engine('hbs', expressHbs({extname:'hbs', defaultLayout: 'main-layout'}));
+app.set('view engine', 'hbs');
+
+app.set('view engine', 'pug');
+*/
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/admin", admitData.routes);
-
+app.use("/admin", admitRoutes);
 app.use(shopRoutes);
 
-app.use((req, res, next) => {
-  // res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-  res.status(404).render("404", { pageTitle: "Page Not Found" });
-});
+app.use(errorController.get404);
 
 app.listen(3000);
