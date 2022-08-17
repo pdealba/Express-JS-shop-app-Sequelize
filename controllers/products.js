@@ -1,4 +1,4 @@
-const Product = require('../models/product');
+const Product = require("../models/product");
 
 exports.getAddProduct = (req, res, next) => {
   // res.sendFile(path.join(rootDir, "views", "add-product.html"));
@@ -18,8 +18,8 @@ exports.postAddProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-    // res.sendFile(path.join(rootDir, "views", "shop.html"));
-    const products = Product.fetchAll();
+  // res.sendFile(path.join(rootDir, "views", "shop.html"));
+  Product.fetchAll((products) => {
     res.render("shop", {
       prods: products,
       path: "/",
@@ -28,4 +28,5 @@ exports.getProducts = (req, res, next) => {
       activeShop: true,
       productCSS: true,
     });
-  }
+  });
+};
