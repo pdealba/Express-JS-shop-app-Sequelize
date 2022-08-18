@@ -21,9 +21,11 @@ app.set('view engine', 'pug');
 */
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/admin", admitRoutes);
+
 app.use(shopRoutes);
 
 app.use(errorController.get404);

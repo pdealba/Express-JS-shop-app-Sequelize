@@ -11,12 +11,6 @@ exports.getAddProduct = (req, res, next) => {
   });
 };
 
-exports.postAddProduct = (req, res, next) => {
-  const product = new Product(req.body.title);
-  product.save();
-  res.redirect("/");
-};
-
 exports.getProducts = (req, res, next) => {
   // res.sendFile(path.join(rootDir, "views", "shop.html"));
   Product.fetchAll((products) => {
@@ -42,9 +36,9 @@ exports.getIndex = (req, res) => {
 };
 
 exports.getCart = (req, res) => {
-  res.render('shop/cart', {path: '/cart', pageTitle: 'Cart'})
-}
+  res.render("shop/cart", { path: "/cart", pageTitle: "Your Cart" });
+};
 
 exports.getCheckout = (req, res) => {
-  res.render('shop/checkout', {path: '/checkout', pageTitle: 'Checkout'})
-}
+  res.render("shop/checkout", { path: "/checkout", pageTitle: "Checkout" });
+};
