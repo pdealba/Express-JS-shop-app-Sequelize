@@ -1,4 +1,5 @@
 const Product = require("../models/product");
+const Cart = require('../models/cart');
 
 exports.getProducts = (req, res, next) => {
   // res.sendFile(path.join(rootDir, "views", "shop.html"));
@@ -40,8 +41,10 @@ exports.getCart = (req, res) => {
 };
 
 exports.postCart = (req, res) => {
-  const postId = req.body.productId;
-  console.log(postId)
+  const prodId = req.body.productId;
+  Product.getById(prodId, (product) => {
+  Cart.addProduct(prodId, product.price);
+  })
   res.redirect('/cart');
 }
 
