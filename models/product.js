@@ -27,20 +27,20 @@ module.exports = class Product {
   }
 
   save() {
-    getsProductFromFiles(products => {
+    getsProductFromFiles((products) => {
       if (this.id) {
         const existingProductIndex = products.findIndex(
-          prod => prod.id === this.id
+          (p) => p.id === this.id
         );
         const updatedProducts = [...products];
         updatedProducts[existingProductIndex] = this;
-        fs.writeFile(p, JSON.stringify(updatedProducts), err => {
+        fs.writeFile(p, JSON.stringify(updatedProducts), (err) => {
           console.log(err);
         });
       } else {
-        this.id = Math.random().toString();
+        this.id = Math.random();
         products.push(this);
-        fs.writeFile(p, JSON.stringify(products), err => {
+        fs.writeFile(p, JSON.stringify(products), (err) => {
           console.log(err);
         });
       }
