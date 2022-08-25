@@ -12,7 +12,7 @@ const Product = sequelize.define("product", {
   title: { type: Sequelize.STRING, allowNull: false },
   price: { type: Sequelize.DOUBLE, allowNull: false },
   imageUrl: { type: Sequelize.STRING, allowNull: false },
-  description: { type: Sequelize.INTEGER, allowNull: false },
+  description: { type: Sequelize.STRING, allowNull: false },
 });
 
 module.exports = Product;
