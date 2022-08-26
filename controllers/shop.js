@@ -136,10 +136,11 @@ exports.postOrder = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-exports.getOrder = (req, res) => {
+exports.getOrders = (req, res) => {
   req.user
     .getOrders({ include: ["products"] })
     .then((orders) => {
+      console.log(orders)
       res.render("shop/orders", {
         path: "/orders",
         pageTitle: "Your Orders",
